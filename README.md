@@ -1,2 +1,2 @@
-# Connet
+# Connect
 Chat Application
