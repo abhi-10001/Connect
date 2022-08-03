@@ -1,45 +1,37 @@
 import java.net.*;
 import java.io.*;
-class Server{
-
+class Server
+{
     ServerSocket server;
     Socket socket;
     BufferedReader br;
     PrintWriter out;
-
-
-
     //Constructor
-    public Server(){
-        try{
+    public Server()
+    {
+        try
+        {
             server = new ServerSocket(9999);
             System.out.println("server is ready to accept connection");
             System.out.println("waiting...");
             socket = server.accept();
-
             br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
             out = new PrintWriter(socket.getOutputStream());
-
             startReading();
             startWriting();
-
-
-        }catch(Exception e){
+        }catch(Exception e)
+        {
             e.printStackTrace();
         }
 
     }
-
-
-
-
-    public static void main(String[] args){
+    public static void main(String[] args)
+    {
         System.out.println("This is server");
         new Server();
     }
-
-    public void startReading(){
+    public void startReading()
+    {
         //thread take data from the user and 
         Runnable r1 = ()->{
             System.out.println("reader started...");
@@ -58,15 +50,11 @@ class Server{
                // e.printStackTrace(); 
                 System.out.println("Connection is closed.");
             }
-
         };
-
         new Thread(r1).start();
-
-
-
     }
-    public void startWriting(){
+    public void startWriting()
+    {
         //thread-read 
         Runnable r2 = ()->{
             System.out.println("writer started..");
@@ -84,13 +72,7 @@ class Server{
             }catch(Exception e){
                 e.printStackTrace();
             }
-
-
         };
-
         new Thread(r2).start();
-
     }
-
-
 }

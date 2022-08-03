@@ -1,14 +1,12 @@
 import java.io.*;
 import java.net.*;
-class Client{
-
+class Client
+{
     Socket socket;
-
     BufferedReader br;
     PrintWriter out;
-
-
-    public Client(){
+    public Client()
+    {
         try{
             System.out.println("Sending request to server");
             socket = new Socket("127.0.0.1", 9999);
@@ -23,16 +21,14 @@ class Client{
         }catch(Exception e){
 
         }
-
     }
-    public static void main(String [] args){
+    public static void main(String [] args)
+    {
         System.out.println("This is Client...");
         new Client();
-
     }
-
-
-    public void startReading(){
+    public void startReading()
+    {
         //thread take data from the user and 
         Runnable r1 = ()->{
             System.out.println("reader started...");
@@ -48,26 +44,19 @@ class Client{
                     System.out.println("Server : "+ msg);
                 } 
             }catch(Exception e){
-               // e.printStackTrace();
+                // e.printStackTrace();
                 System.out.println("Connection is closed.");
             }
-
         };
-
         new Thread(r1).start();
-
-
-
     }
-
-
-
-    public void startWriting(){
+    public void startWriting()
+    {
         //thread-read 
         Runnable r2 = ()->{
             System.out.println("writer started..");
-                try{
-            while(!socket.isClosed()){
+            try{
+                while(!socket.isClosed()){
                     BufferedReader br1 = new BufferedReader(new InputStreamReader(System.in));
                     String content = br1.readLine();
                     out.println(content);
@@ -78,15 +67,11 @@ class Client{
                         break;
                     }
                 }
-                }catch(Exception e){
-                   // e.printStackTrace();
+            }catch(Exception e){
+                // e.printStackTrace();
                 System.out.println("Connection is closed.");
-                }
-
-
+            }
         };
-
         new Thread(r2).start();
-
     }
 }
