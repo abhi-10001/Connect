@@ -1,5 +1,7 @@
+
 import java.io.*;
 import java.net.*;
+
 class Client
 {
     Socket socket;
@@ -9,7 +11,7 @@ class Client
     {
         try{
             System.out.println("Sending request to server");
-            socket = new Socket("127.0.0.1", 9999);
+            socket = new Socket("127.0.0.1", 5050);// put the IPaddress of the server you want to connect
             System.out.println("Connection done!");
 
             br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -41,7 +43,7 @@ class Client
                         socket.close();
                         break;
                     }
-                    System.out.println("Server : "+ msg);
+                    System.out.println("Server: "+ msg);
                 } 
             }catch(Exception e){
                 // e.printStackTrace();

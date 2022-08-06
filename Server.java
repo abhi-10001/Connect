@@ -1,5 +1,7 @@
+
 import java.net.*;
 import java.io.*;
+
 class Server
 {
     ServerSocket server;
@@ -11,7 +13,7 @@ class Server
     {
         try
         {
-            server = new ServerSocket(9999);
+            server = new ServerSocket(5050);
             System.out.println("server is ready to accept connection");
             System.out.println("waiting...");
             socket = server.accept();
@@ -36,11 +38,13 @@ class Server
         Runnable r1 = ()->{
             System.out.println("reader started...");
 
-            try{
-                while(true){
+            try
+            {
+                while(true)
+                {
                     String msg = br.readLine();
                     if(msg.equals("exit")){
-                        System.out.println("Client terminalted the chat");
+                        System.out.println("Client terminated the chat");
                         socket.close();
                         break;
                     }
@@ -55,11 +59,13 @@ class Server
     }
     public void startWriting()
     {
-        //thread-read 
+        //thread-read  
         Runnable r2 = ()->{
             System.out.println("writer started..");
-            try{
-                while(!socket.isClosed()  ){
+            try
+            {
+                while(!socket.isClosed())
+                {
                     BufferedReader br1 = new BufferedReader(new InputStreamReader(System.in));
                     String content = br1.readLine();
                     out.println(content);
