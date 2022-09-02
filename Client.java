@@ -11,8 +11,7 @@ class Client
     {
         try{
             System.out.println("Sending request to server");
-            socket = new Socket("106.202.142.167",8080);// put the IPaddress of the server you want to connect
-            // InetAddress address, int port, InetAddress localAddr, int localPort)
+            socket = new Socket("3.6.98.232",16560);// put the IPaddress of the server you want to connect
 
             System.out.println("Connection done!");
 
