@@ -12,7 +12,7 @@ class Server
     {
         try
         {
-            server = new ServerSocket(5050);
+            server = new ServerSocket(8080);
             System.out.println("server is ready to accept connection");
             System.out.println("waiting...");
             socket = server.accept();
