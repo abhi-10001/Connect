@@ -1,5 +1,4 @@
 # Connect
 Chat Application!!!
 
-This Application works only for local networks. 
-
+This application is build with the help of socket programming.
